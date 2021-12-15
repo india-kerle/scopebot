@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from slack import WebClient
 from slack.errors import SlackApiError
 
-#to run script: python scopeboy/scopebot.py -p "YOUR SLACK BOT TOKEN" -channel "#test-bot"
+#to run script: python scopebot.py -c "#test-bot" -p "YOUR SLACK BOT TOKEN"
 
 #add the slack bot to the channels you want to count the word 'scope' in the slack app.
  
@@ -66,7 +66,6 @@ def scopebot(client, channel_name='#test-bot'):
             channel=channel_name,
             text=scope_counter(slack_messages),
             icon_emoji= ':chart_with_upwards_trend:'
-
         )
         
     except SlackApiError as e:
@@ -79,9 +78,9 @@ def scopebot(client, channel_name='#test-bot'):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-p', '--password', help='slack bot token')
-	parse.add_argument('-channel', '--channel', help='channel name scopebot will message to')
+	parser.add_argument('-c', '--channel', help='channel name scopebot will message to')
 	
-	args=parser.parse_args()
+	args = parser.parse_args()
 	SLACK_TOKEN = args.password
 	channel_name = args.channel
 
