@@ -4,7 +4,6 @@ import time
 import string
 import argparse
 
-from dotenv import load_dotenv
 from slack import WebClient
 from slack.errors import SlackApiError
 
@@ -16,7 +15,7 @@ def get_slack_history(client):
     '''get the last week of slack messages across all channels the bot is part of.'''
     
     channel_ids = [channel['id'] for channel in client.conversations_list()['channels'] if channel['is_private'] == False]
-    
+
     messages = []
     time_stamp = datetime.datetime.now(tz=None)
     last_week = time_stamp - datetime.timedelta(days=7)
