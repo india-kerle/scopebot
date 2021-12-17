@@ -11,6 +11,7 @@ To run the script:
 ```
 git clone git@github.com:india-kerle/scopebot.git
 conda create --name scopebot python=3.9
+conda activate scopebot
 pip install -r requirements.py
 python scopebot.py -c "#test-bot" -p "YOUR SLACK BOT TOKEN"
 ```
